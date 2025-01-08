@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drdo Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        .navbar {
+            overflow: hidden;
+            background-color: #000000;
+        }
+        
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: rgb(20, 134, 192);
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rightLinks">
+        <!-- Language switcher -->
+        <a href="#" class="english active" data-lang="en">English</a>
+        <a href="#" class="hindi" data-lang="hi">हिन्दी</a>
+
+        <a target="_blank" href="https://www.facebook.com/">
+            <img src="facebook_logo.png" width="18px" height="18px">
+            <a target="_blank" href="https://www.instagram.com/">
+                <img src="instagram_logo.png" width="18px" height="18px">
+                <a target="_blank" href="https://x.com/">
+                    <img src="twitter_logo.png" width="18px" height="18px"></a>
+                <div>
+
+                </div>
+    </div>
+    <!-- Logo -->
+    <div class="logo">
+        <a>
+            <img src="https://rac.gov.in/images/rac_logo_2019_sm.png" alt="RAC" style="width:98px; height:98px; ">
+            <img src="https://rac.gov.in/images/siteTitle_n.png" style="padding-top: 12px;" alt="RAC">
+        </a>
+        <img src="https://rac.gov.in/images/india_goi/Emblem_of_India.png" alt="National Emblem of India" style="width: 55px; height:95px; padding-right:300px;">
+
+        <div class="search-container">
+
+            <form class="form">
+                <label for="search">
+                            <input class="input" type="text" required="" placeholder="Search" id="search">
+                            <div class="fancy-bg"></div>
+                            <div class="search">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"
+                                    class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                                    <g  >
+                                        <path
+                                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <button class="close-btn" type="reset">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </label>
+            </form>
+        </div>
+        <a href="https://amritmahotsav.nic.in/">
+            <img src="https://rac.gov.in/images/amrit75-logo.png" class="am-logo" style="
+                    width: 191px;
+                    max-height: 60px;
+                    margin-right: 25px;
+                    padding-bottom: 5px;
+                    margin-top: 35px;">
+        </a>
+    </div>
+
+    <!-- Black TOP BAR -->
+    <div class="top-bar">
+        <div style="display:flex; align-items: center;">
+
+            <!-- <button class="toggle-btn" onclick="toggleSidebar()">☰</button> -->
+            <div class="navbar">
+                <div class="dropdown">
+                    <button onclick="toggleSidebar()" class="dropbtn">☰<i class="fa fa-caret-down"></i>
+                        </button>
+                    <!-- <a onclick="toggleSidebar()" href="">☰</a> -->
+                    <i class="fa fa-caret-down"></i>
+                    <div class="dropdown-content">
+                        <a href="#">Notice</a>
+                        <a href="#">Recuirtement</a>
+                        <a href="#">How To Apply</a>
+                        <a href="#">Conversation Panel</a>
+                        <a href="#">Contact Us  </a>
+                    </div>
+                </div>
+                <a href="#home">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">About RAC<i class="fa fa-caret-down"></i>
+                                </button>
+                    <div class="dropdown-content">
+                        <a href="#">Chairman</a>
+                        <a href="#">Director</a>
+                        <a href="#">Our Approach</a>
+                        <a href="#">About Us</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Programmes
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                    <div class="dropdown-content">
+                        <a href="#">Recruitment</a>
+                        <a href="#">Assessment</a>
+                        <a href="#">Section For PG</a>
+                        <a href="#">LDCE</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Career Opportunity
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                    <div class="dropdown-content">
+                        <a href="#">Lateral Entry</a>
+                        <a href="#">Direct Recruitment</a>
+                    </div>
+                </div>
+                <a href="#DRDO">DRDO</a>
+                <a href="#FAQs">FAQs</a>
+            </div>
+        </div>
+        <a onclick="" class="login" href="public\login\login.html">Login / Register</a>
+
+    </div>
+    <div class main-content>
+        <div>
+            <img src="https://www.drdo.gov.in/drdo/sites/default/files/banner_images/join.png" height="555px" width="1210.5px" alt="join">
+        </div>
+        <div style="background-color: #2c78d5;">
+
+            <marquee>
+
+                <a style="
+                    display: flex;
+                    gap: 5px;
+                    text-decoration: none;
+                    align-items: center;
+                    font-size: 20px;
+                    color: white;
+                    background-color: transparent;" href="https://drdo.gov.in/sites/default/files/video_storage/dhrdsep24-3.mp4" target="_blank">
+                    <img src="video icon.png" alt="">Find an opportunity to pursue your passion </a>
+            </marquee>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

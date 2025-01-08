@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page with CAPTCHA</title>
+    <style>
+        img{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: -1;
+        }
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #565252;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+        .login-container {
+            /* background-color: rgb(120 157 211); */
+            padding: 20px;
+            border-radius: 26px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .login-container h2 {
+            text-align: center;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container input[type="email"],
+        .login-container input[type="tel"],
+        .login-container input[type="DOB"] {
+            width: 94%;
+            padding: 10px;
+            margin: 10px 0;
+            border: -7px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="captcha"] {
+            width: 44%;
+            padding: 10px;
+            margin: 10px 0;
+            border: -7px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .captcha {
+            background-color: rgb(235, 232, 232);
+            font-size: 24px;
+            margin: 0px;
+            margin-right: 123px;
+            margin-inline-start: 129px
+        }
+        
+        .loginFormBox .radioBtnGroup {
+    margin-bottom: 10px;
+}
+
+.radioBtnGroup {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+.radioBtnGroup li {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 25px;
+}
+.radioBtnGroup li {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 25px;
+    /* padding-top: 100px; */
+    width: 20%;
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 5px 0 0;
+}
+input[type="radio"] {
+    display: none;
+}
+input[type="radio"] + label {
+    color: #000000;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+    padding: -1px 0 0 28px;
+    margin-left: 36%;
+}
+
+.captcha img {
+    width: 11%;
+    height: 6%;
+    padding: 1px;
+    border: 2px solid #f3f3f3;
+    margin-left: 50%;
+    margin-top: 40%;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.captcha {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+style attribute {
+    visibility: visible;
+}
+    </style>
+</head>
+<body> 
+    <div>
+        <img src="rac/login5.jpg" height="600px" width="1222.2px" alt="join">
+    </div>
+    <div class="login-container">
+        <h2>DRDO Login</h2>
+
+        <div class="loginFormBox custm_form">
+            <ul class="radioBtnGroup">
+                <li><input value="Warehouse" name="Warehouse" id="warehouse" type="radio" onclick="dologin()"> <label for="warehouse"><a href="http://127.0.0.1:5502/ppp.html">Login</a></label>
+                </li>
+                <li><input value="Warehouse" name="Warehouse" id="warehouse" type="radio" onclick="doregister()"> <label for="warehouse"><a href="http://127.0.0.1:5502/ppp.html">Register</a></label>
+                </li>
+            </ul>
+        </div>  
+
+        <form id="loginForm" onsubmit="return validateForm()">
+            <!-- <input type="text" name="username" placeholder="Username or email address" required> -->
+            <input type="tel" placeholder="MOBILE NUMBER" style="font-size: 12px;" name="phone" required pattern="[0-9]{10}" maxlength="10">
+
+            <input type="password" name="password" placeholder="PASSWORD" style="font-size: 12px;" required>
+            <input type="DOB" name="DOB" placeholder="DATE OF BIRTH" id="Test_DatetimeLocal" style="font-size: 12px;">
+            <input type="text" placeholder="10th Roll No." style="font-size: 12px;" name="roll_no" required>
+            <input type="text" placeholder="10th Passing Year" style="font-size: 12px;" name="passing_year" maxlength="4" required>
+            <input type="email" placeholder="EMAIL" style="font-size: 12px;"  name="email" required>
+    
+            <!-- <div class="captcha" id="" ></div> -->
+            <input type="captcha" id="captchaInput" placeholder="Enter CAPTCHA" style="font-size: 12px;"  required>
+            <!-- <span><img src="https://rac.gov.in/drdo/public/captcha/flat?74QaWQZd"> </span> -->
+            <div class="col-5 col-sm-12 col-md-5 col-lg-5 captcha">
+                <span><img src="https://rac.gov.in/drdo/public/captcha/flat?74QaWQZd  "></span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+   
+<script>
+        
+        
+        function generateCaptcha() {
+            const captchaText = Math.random().toString(36).substring(2, 8);
+            document.getElementById('captcha').textContent = captchaText;
+            return captchaText;
+        }
+
+        let generatedCaptcha = generateCaptcha();
+
+        function validateForm() {
+            const userInput = document.getElementById('captchaInput').value;
+            if (userInput !== generatedCaptcha) {
+                alert('CAPTCHA is incorrect. Please try again.');
+                generatedCaptcha = generateCaptcha(); // Regenerate CAPTCHA
+                return false;
+            }
+            // Proceed with login (you can handle the login logic here)
+            alert('Login successful!');
+            return true; // For demonstration, just show an alert
+        }
+
+        // <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(".btn-refresh").click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'https://rac.gov.in/drdo/public/refresh_captcha',
+                success: function(data) {
+                    $(".captcha span").html(data);
+                }
+            });
+        });
+    </script>
+    
+   
+</body>
+</html>
